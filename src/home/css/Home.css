@@ -30,8 +30,8 @@
 .header__title {
     font-weight: 600;
     font-size: 26px;
-    line-height: 10px;
     color: #3D4276;
+    margin-bottom: 0;
 }
 
 .header__subtitle {
