@@ -8,16 +8,80 @@
 }
 
 .container {
-    background-color: grey;
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: auto;
     padding-bottom: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 10px #00000029;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+    padding-top: 200px;
+    margin-top: 100px;
 }
 
 .header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.header__title {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 10px;
+    color: #3D4276;
+}
+
+.header__subtitle {
+    font-weight: 500;
+    font-size: 20px;
+    color: #949494;
+}
+
+.img-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.connect-four-img-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 20;
+}
+
+.connect-four-img{
+    position: absolute;
+    top: -300px;
+    width: 300px;
+    height: 300px;
+    z-index: 30;
+}
+
+.play {
+    height: 90px;
+    width: 90px;
+    background: #FF7243;
+    box-shadow: 10px 10px 50px #FF724373;
+    border-radius: 20px;    
+}
+
+.play-icon {
+    padding-top: 10px;
+}
+
+.play-text {
+    padding-bottom: 2px;
+    letter-spacing: 4.4px;
+    color: #424242;
+    margin: 0;
 }
 
 .button-group {
@@ -32,31 +96,56 @@
 }
 
 .button {
-    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
     height: 50px;
     border: none;
     outline: none;
-    margin: 10px;
+    margin: 12px;
     border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+.button-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.custom-game-button {
+    background: #4BABFF 0% 0% no-repeat padding-box;
+}
+
+.two-player-button {
+    background: #4B7BFF 0% 0% no-repeat padding-box;
+}
+
+.game-online-button {
+    background: #4B4BFF 0% 0% no-repeat padding-box;
+}
+
+.training-game-button {
+    background: #6E4BFF 0% 0% no-repeat padding-box;
 }
 
 .footer {
+    position: relative;
+    top: -45px;
+    z-index: 0;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     width: 100%;
-    margin-left: 20px;
-}
-
-.image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.play {
     height: 100px;
-    width: 100px;
-    background-color: orange;
+    background: #EEEEEE;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+    color: #424242;
+    font-size: 18px;
+}
+
+.copyright {
+    padding-left: 30px;
+    padding-bottom: 20px;
 }

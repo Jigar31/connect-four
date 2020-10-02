@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Modal from "../common/Modal";
 import "./css/Home.css";
+
+import ConnectFourImg from "../assets/home/connect-four.png";
+import PlayIcon from "../assets/home/play-icon.png";
+import CustomGameIcon from "../assets/home/custom-game-icon.png";
+import TwoPlayerIcon from "../assets/home/two-player-icon.png";
+import OnlineGameIcon from "../assets/home/online-game-icon.png";
+import TrainingGameIcon from "../assets/home/training-game-icon.png";
 
 function Home(props) {
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -8,60 +15,73 @@ function Home(props) {
   const closeModal = () => setShowComingSoon(false);
 
   return (
-    <div className="home-container">
+    <Fragment>
       {showComingSoon && <Modal closeModal={closeModal}>Coming soon</Modal>}
-      <header className="header">
-        <p className="header__title">Connect Four</p>
-        <p className="header__subtitle">
-          Play with other players around the world.
-        </p>
-      </header>
 
-      <main className="container">
-        <div className="image-container">
-          <div className="connect-four-img">
-            <img src="" className="connect-four" alt="connect four" />
+      <div className="home-container">
+        <header className="header">
+          <p className="header__title">Connect Four</p>
+          <p className="header__subtitle">
+            Play with other players around the world.
+          </p>
+        </header>
+
+        <main className="container">
+          <div className="img-container">
+            <div className="connect-four-img-container">
+              <img
+                src={ConnectFourImg}
+                className="connect-four-img"
+                alt="connect four"
+              />
+            </div>
+            <div className="play">
+              <img src={PlayIcon} className="play-icon" alt="play" />
+              <p className="play-text">PLAY</p>
+            </div>
           </div>
-          <div className="play">
-            <img src="" className="play-icon" alt="play" />
-            <p>PLAY</p>
+
+          <div className="button-group">
+            <button
+              className="button custom-game-button"
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+            >
+              <img className="button-icon" src={CustomGameIcon} alt="" />
+              Custom Game
+            </button>
+            <button
+              className="button two-player-button"
+              type="button"
+              onClick={() => props.history.push("/two-player")}
+            >
+              <img className="button-icon" src={TwoPlayerIcon} alt="" />
+              Two Players
+            </button>
+            <button
+              className="button game-online-button"
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+            >
+              <img className="button-icon" src={OnlineGameIcon} alt="" />
+              Game Online
+            </button>
+            <button
+              className="button training-game-button"
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+            >
+              <img className="button-icon" src={TrainingGameIcon} alt="" />
+              Training Game
+            </button>
           </div>
-        </div>
+        </main>
 
-        <div className="button-group">
-          <button
-            className="button custom-game-button"
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-          >
-            Custom Game
-          </button>
-          <button
-            className="button two-player-button"
-            type="button"
-            onClick={() => props.history.push("/two-player")}
-          >
-            Two Players
-          </button>
-          <button
-            className="button game-online-button"
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-          >
-            Game Online
-          </button>
-          <button
-            className="button training-game-button"
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-          >
-            Training Game
-          </button>
-        </div>
-      </main>
-
-      <footer className="footer">&copy; 2020</footer>
-    </div>
+        <footer className="footer">
+          <div className="copyright">&copy; 2020</div>
+        </footer>
+      </div>
+    </Fragment>
   );
 }
 
