@@ -2,7 +2,7 @@ import React from "react";
 import "./css/Congratulations.css";
 
 function Congratulations(props) {
-  let { tournamentEnd, player, game } = props.tournamentEnd;
+  let { tournamentEnd, player, game } = props;
 
   return (
     <div className="congratulations">
