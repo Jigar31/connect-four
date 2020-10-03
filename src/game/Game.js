@@ -206,12 +206,16 @@ function Game(props) {
                 Playing Game {currentGame}
               </div>
             )}
-            {gameWinner !== "" && (
-              <Congratulations player={gameWinner} game={currentGame} />
+            {!tournamentEnd && gameWinner !== "" && (
+              <Congratulations
+                player={gameWinner}
+                game={currentGame}
+                tournamentEnd={false}
+              />
             )}
 
             {tournamentEnd !== "" && (
-              <Congratulations player={} tournamentEnd={true} />
+              <Congratulations player={tournamentWinner} tournamentEnd={true} />
             )}
           </div>
           <div className="score-board-container">
