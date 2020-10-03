@@ -96,10 +96,12 @@ export const fillColumn = (
             let looser = currentGamePlayer === player1.name ? player2 : player1;
 
             updateScore(winner, looser);
-          }
-          currentGamePlayer =
-            currentGamePlayer === player1.name ? player2.name : player1.name;
-          changePlayer();
+	    currentGamePlayer = "";
+          } else {
+          	currentGamePlayer =
+            		currentGamePlayer === player1.name ? player2.name : player1.name;
+          	//changePlayer();
+	  }
 
           currentTurnFinished = true;
           columnClick[selectedColumn] -= 1;
