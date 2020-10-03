@@ -1,0 +1,70 @@
+.player-setting {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    font-weight: 600;
+    color: #424242;
+}
+
+.setting-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.setting-input {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.setting-value {
+    width: 70%;
+    border: none;
+    outline: none;
+    color: #333333;
+    font-size: 26px;
+    line-height: 30px;
+    border-bottom: 1px solid darkgray;
+}
+
+.setting-value:focus {
+    border-bottom: 1px solid #111111;
+}
+
+.player-setting .setting-button-group {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    margin-top: 10px;
+    width: 90%;
+    border-top: 1px solid darkgray;
+}
+
+.player-setting .setting-button {
+    border: 1px solid #4B7BFF26;
+    border-radius: 10px;
+    color: #4B7BFF;
+    font-size: 22px;
+    padding: 10px;
+    width: 110px;
+    margin-left: 10px;
+}
+
+.player-setting .cancel-button {
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #4B7BFF26;
+    color: #4B7BFF;
+}
+
+.player-setting .confirm-button {
+    background: #4B7BFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #70707026;
+    color: #FFFFFF;
+}

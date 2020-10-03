@@ -16,7 +16,11 @@ function Home(props) {
 
   return (
     <Fragment>
-      {showComingSoon && <Modal closeModal={closeModal}>Coming soon</Modal>}
+      {showComingSoon && (
+        <Modal closeModal={closeModal}>
+          <div className="coming-soon">Coming soon</div>
+        </Modal>
+      )}
 
       <div className="home-container">
         <header className="header">

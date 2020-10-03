@@ -1,0 +1,27 @@
+.container-box {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 5%;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.container-box__info {
+    margin-left: 10px;
+    width: 60%;
+}
+
+.container-box__title {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.container-box__value {
+    font-size: 18px;
+    width: 100%;
+    margin-top: 5px;
+    border-bottom: 1px solid darkgray;
+}

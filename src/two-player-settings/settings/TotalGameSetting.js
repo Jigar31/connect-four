@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/TotalGameSetting.css";
 
 function TotalGameSetting(props) {
   const totalGamesOptions = [2, 3, 5, 10];
@@ -9,18 +10,19 @@ function TotalGameSetting(props) {
   let newTotalGames = totalGamesSelected;
 
   return (
-    <div className="total-games ">
+    <div className="total-games-setting">
       <div className="setting-title">Number of Games</div>
       <div className="setting-options radio-group">
         {totalGamesOptions.map((totalGamesOption, index) => {
           return (
             <div
-              className="total-game-option radio-option"
+              className="total-games-option"
               key={`total-games-options-${index}`}
             >
               <input
                 type="radio"
-                id={`total-games-options-${index}`}
+                className="radio-option"
+                id={`total-games-option-${index}`}
                 defaultChecked={totalGamesOption === totalGamesSelected}
                 name="total-games-option"
                 value={totalGamesOption}
@@ -41,14 +43,14 @@ function TotalGameSetting(props) {
       <div className="setting-button-group">
         <button
           type="button"
-          className="cancel-button"
+          className="cancel-button setting-button"
           onClick={() => closeModal()}
         >
           Cancel
         </button>
         <button
           type="button"
-          className="confirm-button"
+          className="confirm-button setting-button"
           onClick={() => {
             setTotalGames(newTotalGames);
             closeModal();

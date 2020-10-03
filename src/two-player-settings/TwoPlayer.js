@@ -5,6 +5,14 @@ import PlayerSetting from "./settings/PlayerSetting";
 import TotalGamesSetting from "./settings/TotalGameSetting";
 import TurnSetting from "./settings/TurnSetting";
 
+import "./css/TwoPlayer.css";
+
+import BackArrow from "../assets/two-player/arrow-left.svg";
+import Player1Avatar from "../assets/two-player/player1-avatar.png";
+import Player2Avatar from "../assets/two-player/player2-avatar.png";
+import TotalGamesAvatar from "../assets/two-player/total-games-avatar.png";
+import TurnSettingAvatar from "../assets/two-player/turn-setting-avatar.png";
+
 function TwoPlayer(props) {
   const [player1Name, setPlayer1Name] = useState("David");
   const [player2Name, setPlayer2Name] = useState("Maria");
@@ -32,12 +40,12 @@ function TwoPlayer(props) {
   const containerBoxSettings = {
     player1: {
       tileInfo: {
-        tileBorderColor: "white",
-        tileImg: null,
+        tileBorderColor: "#37AC5D",
+        tileImg: Player1Avatar,
         tileTitle: "player1 tile",
       },
-      containerBoxColor: "lightgray",
-      containerBoxBorderColor: "darkgray",
+      containerBoxColor: "#DCF6E4",
+      containerBoxBorderColor: "#70707026",
       title: "Player 1",
       value: player1Name,
       showModal: () => setShowPlayer1Modal(true),
@@ -45,12 +53,12 @@ function TwoPlayer(props) {
     },
     player2: {
       tileInfo: {
-        tileBorderColor: "white",
-        tileImg: null,
+        tileBorderColor: "#F8D146",
+        tileImg: Player2Avatar,
         tileTitle: "player2 tile",
       },
-      containerBoxColor: "lightgray",
-      containerBoxBorderColor: "darkgray",
+      containerBoxColor: "#F6EFD5",
+      containerBoxBorderColor: "#70707026",
       title: "Player 2",
       value: player2Name,
       showModal: () => setShowPlayer2Modal(true),
@@ -58,12 +66,12 @@ function TwoPlayer(props) {
     },
     totalGames: {
       tileInfo: {
-        tileBorderColor: "white",
-        tileImg: null,
+        tileBorderColor: "#B1C4F9",
+        tileImg: TotalGamesAvatar,
         tileTitle: "total games tile",
       },
-      containerBoxColor: "lightgray",
-      containerBoxBorderColor: "darkgray",
+      containerBoxColor: "#EFF3FF",
+      containerBoxBorderColor: "#70707026",
       title: "Number of Games",
       value: `${totalGames} Games`,
       showModal: () => setShowTotalGamesModal(true),
@@ -71,12 +79,12 @@ function TwoPlayer(props) {
     },
     turnSetting: {
       tileInfo: {
-        tileBorderColor: "white",
-        tileImg: null,
+        tileBorderColor: "#B1C4F9",
+        tileImg: TurnSettingAvatar,
         tileTitle: "turn setting tile",
       },
-      containerBoxColor: "lightgray",
-      containerBoxBorderColor: "darkgray",
+      containerBoxColor: "#EFF3FF",
+      containerBoxBorderColor: "#70707026",
       title: "Who starts",
       value: turnSettingOptionLabels[turnSetting],
       showModal: () => setShowTurnSettingModal(true),
@@ -92,10 +100,15 @@ function TwoPlayer(props) {
   };
 
   return (
-    <div className="two-players">
-      <div className="header">
-        <span onClick={() => props.history.push("/")}>back button</span>
-        <p>Two Players</p>
+    <div className="two-player-container">
+      <div className="two-player__header ">
+        <img
+          src={BackArrow}
+          alt="back"
+          className="two-player__header__back-icon"
+          onClick={() => props.history.push("/")}
+        />
+        <p className="two-player__header__title">Two Players</p>
       </div>
 
       {showPlayer1Modal && (
@@ -138,24 +151,25 @@ function TwoPlayer(props) {
         </Modal>
       )}
 
-      <div className="settings">
+      <div className="settings-container">
         <ContainerBox info={containerBoxSettings.player1} />
         <ContainerBox info={containerBoxSettings.player2} />
         <ContainerBox info={containerBoxSettings.totalGames} />
         <ContainerBox info={containerBoxSettings.turnSetting} />
-        <hr />
-        <button
-          className="start-button"
-          type="button"
-          onClick={() =>
-            props.history.push({
-              pathname: "/game",
-              state: selectedGameSettings,
-            })
-          }
-        >
-          Start Game
-        </button>
+        <div className="start-game">
+          <button
+            className="start-button"
+            type="button"
+            onClick={() =>
+              props.history.push({
+                pathname: "/game",
+                state: selectedGameSettings,
+              })
+            }
+          >
+            Start Game
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -70,7 +70,8 @@
     width: 90px;
     background: #FF7243;
     box-shadow: 10px 10px 50px #FF724373;
-    border-radius: 20px;    
+    border-radius: 20px;
+    text-align: center;
 }
 
 .play-icon {
@@ -148,4 +149,8 @@
 .copyright {
     padding-left: 30px;
     padding-bottom: 20px;
+}
+
+.coming-soon {
+    padding: 50px;
 }

@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../css/PlayerSetting.css";
+
 function PlayerSetting(props) {
   const title = props.title;
   const playerName = props.playerName;
@@ -13,6 +15,7 @@ function PlayerSetting(props) {
       <div className="setting-input">
         <input
           type="text"
+          className="setting-value"
           defaultValue={playerName}
           onChange={(e) => {
             newPlayerName = e.target.value;
@@ -22,14 +25,14 @@ function PlayerSetting(props) {
       <div className="setting-button-group">
         <button
           type="button"
-          className="cancel-button"
+          className="cancel-button setting-button"
           onClick={() => closeModal()}
         >
           Cancel
         </button>
         <button
           type="button"
-          className="confirm-button"
+          className="confirm-button setting-button"
           onClick={() => {
             setPlayerName(newPlayerName);
             closeModal();

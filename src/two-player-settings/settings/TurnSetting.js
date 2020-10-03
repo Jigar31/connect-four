@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/TurnSetting.css";
 
 function TurnSetting(props) {
   const turnSettingOptions = props.turnSettingOptions;
@@ -12,12 +13,9 @@ function TurnSetting(props) {
   return (
     <div className="turn-setting">
       <div className="setting-title">Who Starts</div>
-      <div className="setting-options radio-group">
+      <div className="setting-options">
         {turnSettingOptions.map((turnSetting, index) => (
-          <div
-            className="turn-setting-radio radio-selection"
-            key={`turn-setting-${index}`}
-          >
+          <div className="turn-setting-option" key={`turn-setting-${index}`}>
             <input
               type="radio"
               className="radio-option"
@@ -41,14 +39,14 @@ function TurnSetting(props) {
       <div className="setting-button-group">
         <button
           type="button"
-          className="cancel-button"
+          className="cancel-button setting-button"
           onClick={() => closeModal()}
         >
           Cancel
         </button>
         <button
           type="button"
-          className="confirm-button"
+          className="confirm-button setting-button"
           onClick={() => {
             setTurnSetting(newTurnSetting);
             closeModal();

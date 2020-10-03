@@ -1,5 +1,6 @@
 import React from "react";
 import Tile from "./Tile";
+import "./css/ContainerBox.css";
 
 function ContainerBox(props) {
   const {
@@ -17,9 +18,9 @@ function ContainerBox(props) {
 
   if (settings) {
     containerBoxContent = (
-      <div className="container-box-main">
-        <div className="container-box-title">{title}</div>
-        <div className="container-box-value" onClick={() => showModal()}>
+      <div className="container-box__info">
+        <div className="container-box__title">{title}</div>
+        <div className="container-box__value" onClick={() => showModal()}>
           {value}
         </div>
       </div>
