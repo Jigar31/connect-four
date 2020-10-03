@@ -27,7 +27,7 @@ export const drawTile = (
 
   if (currentPlayer === player1) {
     color = "#37AC5D";
-    ctx.drawImage(player1Img, left + 12, top + 12, 25, 25);
+    ctx.drawImage(player1Img, left + 14, top + 12, 22, 25);
   } else if (currentPlayer === player2) {
     color = "#F8D146";
     ctx.drawImage(player2Img, left + 12, top + 12, 25, 25);

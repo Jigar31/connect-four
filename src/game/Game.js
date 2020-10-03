@@ -74,7 +74,7 @@ function Game(props) {
   // let [column, setColumn] = useState(6);
 
   let row = 6;
-  let column = 7;
+  let column = 6;
 
   const canvasRef = useRef(null);
   const [grid, setGrid] = useState(
@@ -210,48 +210,36 @@ function Game(props) {
           <div className="score-board-container">
             <ContainerBox info={containerBoxSettings.player1} />
             <ContainerBox info={containerBoxSettings.player2} />
-            <div className="game-button-group">
-              {!tournamentEnd && showNextGame && (
-                <button
-                  type="button"
-                  className="game-button next-game-button"
-                  onClick={() => {
-                    initializeGame();
-                    setCurrentPlayer(
-                      getTurn(
-                        turnSetting,
-                        currentPlayer,
-                        player1.name,
-                        player2.name
-                      )
-                    );
-                  }}
-                >
-                  Next Game
-                </button>
-              )}
-              {!tournamentEnd && !showNextGame && (
-                <button type="button" className="game-button undo-button">
-                  Undo
-                </button>
-              )}
-              {tournamentEnd && (
-                <button
-                  type="button"
-                  className="game-button play-again-button"
-                  onClick={() => {
-                    setPlayer1((prevState) => ({ ...prevState, score: 0 }));
-                    setPlayer2((prevState) => ({ ...prevState, score: 0 }));
-                    setCurrentGame(0);
-                    initializeGame();
-                  }}
-                >
-                  Play Again
-                </button>
-              )}
+          </div>
+          <div className="game-button-group">
+            {!tournamentEnd && showNextGame && (
               <button
                 type="button"
-                className="game-button end-tournament-button"
+                className="game-button next-game-button"
+                onClick={() => {
+                  initializeGame();
+                  setCurrentPlayer(
+                    getTurn(
+                      turnSetting,
+                      currentPlayer,
+                      player1.name,
+                      player2.name
+                    )
+                  );
+                }}
+              >
+                Next Game
+              </button>
+            )}
+            {!tournamentEnd && !showNextGame && (
+              <button type="button" className="game-button undo-button">
+                Undo
+              </button>
+            )}
+            {tournamentEnd && (
+              <button
+                type="button"
+                className="game-button play-again-button"
                 onClick={() => {
                   setPlayer1((prevState) => ({ ...prevState, score: 0 }));
                   setPlayer2((prevState) => ({ ...prevState, score: 0 }));
@@ -259,9 +247,21 @@ function Game(props) {
                   initializeGame();
                 }}
               >
-                End Tournament
+                Play Again
               </button>
-            </div>
+            )}
+            <button
+              type="button"
+              className="game-button end-tournament-button"
+              onClick={() => {
+                setPlayer1((prevState) => ({ ...prevState, score: 0 }));
+                setPlayer2((prevState) => ({ ...prevState, score: 0 }));
+                setCurrentGame(0);
+                initializeGame();
+              }}
+            >
+              End Tournament
+            </button>
           </div>
         </div>
       </div>

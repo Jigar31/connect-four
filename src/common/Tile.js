@@ -3,15 +3,26 @@ import "./css/Tile.css";
 
 function Tile(props) {
   const { tileBorderColor, tileImg, tileTitle } = props.tileInfo;
+  const settings = props.settings;
+  let tileClass = "";
+  let tileContainerClass = "";
+
+  if (settings) {
+    tileClass = "tile-avatar";
+    tileContainerClass = "tile-container";
+  } else {
+    tileClass = "tile-avatar-sm";
+    tileContainerClass = "tile-container-sm";
+  }
 
   return (
     <div
-      className="tile-container"
+      className={tileContainerClass}
       style={{
         borderColor: tileBorderColor,
       }}
     >
-      <img src={tileImg} className="tile-avatar" alt={tileTitle} />
+      <img src={tileImg} className={tileClass} alt={tileTitle} />
     </div>
   );
 }

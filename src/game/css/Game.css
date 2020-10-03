@@ -4,8 +4,9 @@
 
 .game-board {
     display: flex;
-    flex-direction: column;
-    align-items: center ;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
 }
 
 .game-header {
@@ -25,25 +26,73 @@
     justify-content: center;
 }
 
+.score-board-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.score-board-container .container-box {
+    width: 150px;
+    margin: 10px
+}
+
+.current-game-info {
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    top: -100px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+    width: 384px;
+    height: 350px;
+}
+
+.game-info {
+    position: relative;
+    margin-top: 10px;
+    background: #F5F5F5;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+    padding-bottom: 100px;
+    z-index: 0;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
 .game-button-group {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 85%;
-    border-top: 1px solid darkgray;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .game-button {
+    border: none;
     outline: none;
     border: 1px solid #4B7BFF26;
     border-radius: 10px;
     color: #4B7BFF;
-    font-size: 22px;
-    padding: 5px;
-    width: 150px;
     margin-left: 10px;
+    height: 40px;
+    width: 150px;
+    font-size: 16px;
 }
 
 .next-game-button, .undo-button, .play-again-button  {
@@ -54,10 +103,6 @@
     color: white;
 }
 
-.play-again-button {
-    box-shadow: 0px 3px 6px #ffffff29;
-}
-
 .end-tournament-button {
     background: #FFFFFF;
     box-shadow: 0px 3px 6px #00000029;
@@ -66,37 +111,83 @@
     color: #CC0000; 
 }
 
-.game-info {
-    background: #F5F5F5;
-    border: 1px solid #F7F7F7;
-    border-radius: 30px;
-    margin-left: 10%;
-    margin-right: 10%;
+@media screen and (min-width: 550px) {
+    .score-board-container .container-box {
+        width: 200px;
+        margin: 20px;
+    }
+
+    .game {
+        width: 524px;
+    }
 }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-}
+@media screen and (min-width: 700px) {
+    .score-board-container {
+        flex-direction: column;
+    }
 
-.info-header {
-    font-size: 20px;
-    font-weight: 600;
-}
+    .score-board-container .container-box {
+        width: 250px;
+        margin: 10px;
+    }
 
-.current-game-info {
-    font-size: 16px;
-    font-weight: 500;
-}
+    .game-board {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
 
-.game {
-    margin: 20px 10px;
-    padding: 20px;
-    background: #FFFFFF;
-    box-shadow: 0px 3px 6px #00000029;
-    border: 1px solid #F7F7F7;
-    border-radius: 30px;
+    .game {
+        top: 5px;
+        width: 0;
+        position: relative;
+        z-index: 10;
+        left: 50px;
+        background: #FFFFFF;
+        box-shadow: 0px 3px 6px #00000029;
+        border: 1px solid #F7F7F7;
+        border-radius: 30px;
+        width: 400px;
+        height: 571px;
+    }
+    
+    .info {
+        height: 100px;
+    }
+
+    .game-info {
+        position: relative;
+        margin-top: 10px;
+        background: #F5F5F5;
+        border: 1px solid #F7F7F7;
+        border-radius: 30px;
+        padding-bottom: 0px;
+        padding-left: 100px;
+        padding-right: 20px;
+        left: -50px;
+        z-index: 0;
+    }
+
+    .game-button-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+        margin-top:  30px;
+        margin-left: 20px;
+        border-top: 1px solid lightgray;
+        width: 80%;
+    }
+    
+    .game-button {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        height: 50px;
+        width: 200px;
+        font-size: 20px;
+    }
 }

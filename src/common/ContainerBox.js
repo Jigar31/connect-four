@@ -38,15 +38,13 @@ function ContainerBox(props) {
         : "transparent-border player-tile";
     containerBoxContent = (
       <Fragment>
-        <div className="score-board-container">
-          <div className="container-box__info__readonly">
-            <div className="container-box__title">{title}</div>
-            <div className="container-box__value">{value}</div>
-          </div>
-          <div className="container-box__info__readonly score-info">
-            <div className="container-box__title">Score</div>
-            <div className="container-box__value">{score}</div>
-          </div>
+        <div className="container-box__info__readonly">
+          <div className="container-box__title">{title}</div>
+          <div className="container-box__value">{value}</div>
+        </div>
+        <div className="container-box__info__readonly score-info">
+          <div className="container-box__title">Score</div>
+          <div className="container-box__value">{score}</div>
         </div>
       </Fragment>
     );
@@ -61,7 +59,7 @@ function ContainerBox(props) {
       }}
     >
       <div className={playerTileClass}>
-        <Tile tileInfo={tileInfo} />
+        <Tile tileInfo={tileInfo} settings={settings} />
       </div>
       {containerBoxContent}
     </div>

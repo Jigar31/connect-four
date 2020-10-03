@@ -42,10 +42,10 @@ export const drawEmptySpots = (
 
       ctx.fillStyle = "white";
       ctx.moveTo(left, top);
-      ctx.shadowOffsetX = -5;
-      ctx.shadowOffsetY = 5;
-      ctx.shadowBlur = 5;
-      ctx.shadowColor = "rgba(130,130,130, 0.5)";
+      // ctx.shadowOffsetX = -5;
+      // ctx.shadowOffsetY = 5;
+      // ctx.shadowBlur = 5;
+      // ctx.shadowColor = "rgba(130,130,130, 0.5)";
       ctx.arc(left, top, radius, startAngle, endAngle, false);
     }
   }
