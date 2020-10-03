@@ -214,7 +214,7 @@ function Game(props) {
               />
             )}
 
-            {tournamentEnd !== "" && (
+            {tournamentEnd && (
               <Congratulations player={tournamentWinner} tournamentEnd={true} />
             )}
           </div>
