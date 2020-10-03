@@ -33,7 +33,7 @@ function Game(props) {
   });
 
   const [currentPlayer, setCurrentPlayer] = useState(
-    getTurn(turnSetting, player1Name, player1Name, player2Name)
+    getTurn(turnSetting, "", player1Name, player2Name)
   );
   const [currentGame, setCurrentGame] = useState(0);
   const [gameWinner, setGameWinner] = useState("");
