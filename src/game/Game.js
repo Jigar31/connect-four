@@ -120,6 +120,8 @@ function Game(props) {
       );
       setTournamentEnd(true);
       setTournamentWinner(winner.name);
+      setGameWinner("");
+
       // props.history.push("/two-player");
     }
   }, [currentGame, player1, player2, totalGames]);
