@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import ContainerBox from "../common/ContainerBox";
 import Congratulations from "./Congratulations";
+
 import { initializeCanvas } from "./graphics/initializeCanvas";
 import { fillColumn } from "./fillColumn";
 import { getTurn } from "./game-logic/getTurn";
@@ -37,6 +38,7 @@ function Game(props) {
   const [currentGame, setCurrentGame] = useState(0);
   const [gameWinner, setGameWinner] = useState("");
   const [tournamentEnd, setTournamentEnd] = useState(false);
+  const [tournamentWinner, setTournamentWinner] = useState("");
   const [showNextGame, setShowNextGame] = useState(false);
 
   const containerBoxSettings = {
@@ -117,6 +119,7 @@ function Game(props) {
         `Tournament winner is ${winner.name} with ${winner.score} wins`
       );
       setTournamentEnd(true);
+      setTournamentWinner(winner.name);
       // props.history.push("/two-player");
     }
   }, [currentGame, player1, player2, totalGames]);
@@ -205,6 +208,10 @@ function Game(props) {
             )}
             {gameWinner !== "" && (
               <Congratulations player={gameWinner} game={currentGame} />
+            )}
+
+            {tournamentEnd !== "" && (
+              <Congratulations player={} tournamentEnd={true} />
             )}
           </div>
           <div className="score-board-container">
