@@ -1,12 +1,13 @@
 import React from "react";
+import "./css/Congratulations.css";
 
 function Congratulations(props) {
   return (
     <div className="congratulations">
-      <p className="congratulations-title">Congratulations</p>
-      <p className="winner-info">
+      <div className="congratulations-title">Congratulations!</div>
+      <div className="winner-info">
         {props.player}, you won Game {props.game}
-      </p>
+      </div>
     </div>
   );
 }

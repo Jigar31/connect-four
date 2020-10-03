@@ -3,7 +3,7 @@ import { checkGameWin } from "./game-logic/checkGameWin";
 import { highlightTiles } from "./graphics/highlightTiles";
 
 let currentTurnFinished = true;
-let columnClick = Array(8).fill(8);
+let columnClick = [];
 let currentGamePlayer = "";
 
 export const fillColumn = (
@@ -15,10 +15,12 @@ export const fillColumn = (
   player1,
   player2,
   updateScore,
-  currentPlayer
+  currentPlayer,
+  changePlayer
 ) => {
   if (currentGamePlayer === "") {
     currentGamePlayer = currentPlayer;
+    columnClick = Array(grid.length).fill(grid[0].length);
   }
   console.log("currentPlayer:", currentPlayer);
   if (currentTurnFinished) {
@@ -66,8 +68,8 @@ export const fillColumn = (
           canvasGrid.height,
           grid,
           setGrid,
-          player1.name,
-          player2.name,
+          player1,
+          player2,
           currentGamePlayer,
           columnClick,
           grid[dropAtRow][selectedColumn]
@@ -88,16 +90,16 @@ export const fillColumn = (
           );
           if (won) {
             highlightTiles(ctx, grid, winningTiles);
-            columnClick = Array(6).fill(7);
+            columnClick = Array(grid.length).fill(grid[0].length);
 
             let winner = currentGamePlayer === player1.name ? player1 : player2;
             let looser = currentGamePlayer === player1.name ? player2 : player1;
 
             updateScore(winner, looser);
           }
-
           currentGamePlayer =
             currentGamePlayer === player1.name ? player2.name : player1.name;
+          changePlayer();
 
           currentTurnFinished = true;
           columnClick[selectedColumn] -= 1;

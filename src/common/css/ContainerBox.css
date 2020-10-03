@@ -25,3 +25,41 @@
     margin-top: 5px;
     border-bottom: 1px solid darkgray;
 }
+
+.container-box__info__readonly {
+    margin-left: 10px;
+    width: 60px;
+}
+
+.score-info {
+    position: relative;
+    right: 0;
+}
+
+.container-box__info__readonly .container-box__value {
+    border: none;
+}
+
+.score-board {
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-player {
+    border-radius: 50%;
+    border: 10px solid orange;
+}
+
+.transparent-border {
+    border: 10px solid rgba(0, 0, 0, 0);
+}
+
+.player-tile {
+    margin-top: 10px;
+}
+
+.score-board-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

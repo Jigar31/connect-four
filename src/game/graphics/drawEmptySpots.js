@@ -13,9 +13,9 @@ export const drawEmptySpots = (
   const startAngle = 0;
   const endAngle = Math.PI * 2;
 
-  let x = 45;
-  let y = 45;
-  let margin = 20;
+  let x = 25;
+  let y = 25;
+  let margin = 0;
 
   let newGrid;
   if (initialDraw) {
@@ -33,7 +33,7 @@ export const drawEmptySpots = (
           left: 50 * j + margin,
           right: 50 * j + 50 + margin,
           filled: false,
-          player: "",
+          filledBy: "",
         };
       }
 
@@ -42,11 +42,15 @@ export const drawEmptySpots = (
 
       ctx.fillStyle = "white";
       ctx.moveTo(left, top);
+      ctx.shadowOffsetX = -5;
+      ctx.shadowOffsetY = 5;
+      ctx.shadowBlur = 5;
+      ctx.shadowColor = "rgba(130,130,130, 0.5)";
       ctx.arc(left, top, radius, startAngle, endAngle, false);
     }
   }
-  ctx.fill();
 
+  ctx.fill();
   if (initialDraw) {
     // console.log("grid", grid);
     // console.log("newGrid", newGrid);

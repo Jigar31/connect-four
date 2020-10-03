@@ -21,17 +21,10 @@ export const dropTile = (
 
   const dropTileAnimation = () => {
     count++;
-    let color = "";
     clearCanvas(ctx, width, height);
     drawCanvas(ctx, width, height);
     drawEmptySpots(ctx, grid, setGrid, false);
-    drawFilledSpots(ctx, grid, player1, player2);
-
-    if (currentPlayer === player1) {
-      color = "red";
-    } else if (currentPlayer === player2) {
-      color = "yellow";
-    }
+    drawFilledSpots(ctx, grid, player1.name, player2.name);
 
     if (
       columnClick[blockToDropAt.col] !== 0 &&
@@ -44,9 +37,12 @@ export const dropTile = (
         blockToDropAt.right,
         dropTileFrom,
         dropTileFrom + 50,
-        color
+        currentPlayer,
+        player1.name,
+        player2.name
       );
       dropTileFrom += 20;
+
       requestAnimationFrame(dropTileAnimation);
     } else {
       // draw at exact block
@@ -56,7 +52,9 @@ export const dropTile = (
         blockToDropAt.right,
         blockToDropAt.top,
         blockToDropAt.bottom,
-        color
+        currentPlayer,
+        player1.name,
+        player2.name
       );
 
       dropTileFrom = 0;

@@ -1,6 +1,6 @@
 export const highlightTiles = (ctx, grid, tiles) => {
   tiles.forEach((currentTile) => {
-    const radius = 22;
+    const radius = 23;
     const startAngle = 0;
     const endAngle = Math.PI * 2;
 
@@ -11,8 +11,8 @@ export const highlightTiles = (ctx, grid, tiles) => {
 
     ctx.beginPath();
     ctx.arc(x, y, radius, startAngle, endAngle, false);
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = "green";
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "yellow";
     ctx.stroke();
   });
 };

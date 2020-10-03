@@ -6,6 +6,12 @@ import { fillColumn } from "./fillColumn";
 import { getTurn } from "./game-logic/getTurn";
 import { clearCanvas } from "./graphics/clearCanvas";
 
+import BackArrow from "../assets/two-player/arrow-left.svg";
+import Player1Avatar from "../assets/two-player/player1-avatar.png";
+import Player2Avatar from "../assets/two-player/player2-avatar.png";
+
+import "./css/Game.css";
+
 function Game(props) {
   const {
     player1Name,
@@ -17,10 +23,12 @@ function Game(props) {
   const [player1, setPlayer1] = useState({
     name: player1Name,
     score: 0,
+    tile: player1Name,
   });
   const [player2, setPlayer2] = useState({
     name: player2Name,
     score: 0,
+    tile: player2Name,
   });
 
   const [currentPlayer, setCurrentPlayer] = useState(
@@ -34,40 +42,45 @@ function Game(props) {
   const containerBoxSettings = {
     player1: {
       tileInfo: {
-        tileBorderColor: "white",
-        tileImg: null,
+        tileBorderColor: "#37AC5D",
+        tileImg: Player1Avatar,
         tileTitle: "player1 tile",
       },
-      containerBoxColor: "lightgray",
-      containerBoxBorderColor: "darkgray",
-      title: "Player 1",
+      containerBoxColor: "#DCF6E4",
+      containerBoxBorderColor: "#70707026",
+      title: "Player 01",
       value: player1.name,
       settings: false,
       score: player1.score,
+      currentPlayer: currentPlayer,
     },
     player2: {
       tileInfo: {
-        tileBorderColor: "white",
-        tileImg: null,
+        tileBorderColor: "#F8D146",
+        tileImg: Player2Avatar,
         tileTitle: "player2 tile",
       },
-      containerBoxColor: "lightgray",
-      containerBoxBorderColor: "darkgray",
-      title: "Player 2",
+      containerBoxColor: "#F6EFD5",
+      containerBoxBorderColor: "#70707026",
+      title: "Player 02",
       value: player2.name,
       settings: false,
       score: player2.score,
+      currentPlayer: currentPlayer,
     },
   };
 
-  let row = 8;
-  let column = 8;
+  // let [row, setRow] = useState(6);
+  // let [column, setColumn] = useState(6);
+
+  let row = 6;
+  let column = 7;
 
   const canvasRef = useRef(null);
   const [grid, setGrid] = useState(
     Array(row)
       .fill()
-      .map(() => Array(column).fill(0))
+      .map(() => Array(column).fill({}))
   );
 
   const updateScore = (winner, looser) => {
@@ -118,7 +131,8 @@ function Game(props) {
       player1,
       player2,
       updateScore,
-      currentPlayer
+      currentPlayer,
+      changePlayer
     );
   };
 
@@ -129,6 +143,12 @@ function Game(props) {
   const removeClickHandler = () => {
     console.log("remove click handler");
     canvasRef.current.removeEventListener("click", clickHandler, false);
+  };
+
+  const changePlayer = () => {
+    setCurrentPlayer((prevState) =>
+      prevState === player1.name ? player2.name : player1.name
+    );
   };
 
   useEffect(() => {
@@ -144,7 +164,7 @@ function Game(props) {
     setCurrentGame((prevState) => prevState + 1);
     let newGrid = Array(row)
       .fill()
-      .map(() => Array(column).fill(0));
+      .map(() => Array(column).fill({}));
     setGrid(newGrid);
     let ctx = canvasRef.current.getContext("2d");
     clearCanvas(ctx, canvasRef.current.width, canvasRef.current.height);
@@ -161,23 +181,33 @@ function Game(props) {
   };
 
   return (
-    <div className="game">
-      <div className="header">
-        <span onClick={() => props.history.push("/two-player")}>
-          back button
-        </span>
-        <p>Two Players</p>
+    <div className="game-container">
+      <div className="game-header">
+        <img
+          src={BackArrow}
+          alt="back"
+          className="game-header__back-icon"
+          onClick={() => props.history.push("/two-player")}
+        />
+        <p className="game-header__title">Two Players</p>
       </div>
       <div className="game-board">
-        <canvas ref={canvasRef} width="440px" height="440px"></canvas>
+        <div className="game">
+          <canvas ref={canvasRef} width="300px" height="300px"></canvas>
+        </div>
         <div className="game-info">
           <div className="info">
-            <p>{totalGames} Games Tournament</p>
+            <div className="info-header">{totalGames} Games Tournament</div>
+            {gameWinner === "" && (
+              <div className="current-game-info">
+                Playing Game {currentGame}
+              </div>
+            )}
             {gameWinner !== "" && (
               <Congratulations player={gameWinner} game={currentGame} />
             )}
           </div>
-          <div className="score-board">
+          <div className="score-board-container">
             <ContainerBox info={containerBoxSettings.player1} />
             <ContainerBox info={containerBoxSettings.player2} />
             <div className="game-button-group">
@@ -203,6 +233,20 @@ function Game(props) {
               {!tournamentEnd && !showNextGame && (
                 <button type="button" className="game-button undo-button">
                   Undo
+                </button>
+              )}
+              {tournamentEnd && (
+                <button
+                  type="button"
+                  className="game-button play-again-button"
+                  onClick={() => {
+                    setPlayer1((prevState) => ({ ...prevState, score: 0 }));
+                    setPlayer2((prevState) => ({ ...prevState, score: 0 }));
+                    setCurrentGame(0);
+                    initializeGame();
+                  }}
+                >
+                  Play Again
                 </button>
               )}
               <button

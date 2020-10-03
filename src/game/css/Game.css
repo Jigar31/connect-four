@@ -1,0 +1,102 @@
+.game-container {
+    color: #424242;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+}
+
+.game-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.game-header__title {
+    display: flex;
+    flex-basis: 87%;
+    justify-content: center;
+}
+
+.game-button-group {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 85%;
+    border-top: 1px solid darkgray;
+}
+
+.game-button {
+    outline: none;
+    border: 1px solid #4B7BFF26;
+    border-radius: 10px;
+    color: #4B7BFF;
+    font-size: 22px;
+    padding: 5px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+.next-game-button, .undo-button, .play-again-button  {
+    background: #4B7BFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #70707026;
+    border-radius: 10px;
+    color: white;
+}
+
+.play-again-button {
+    box-shadow: 0px 3px 6px #ffffff29;
+}
+
+.end-tournament-button {
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #4B7BFF26;
+    border-radius: 10px;
+    color: #CC0000; 
+}
+
+.game-info {
+    background: #F5F5F5;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.info-header {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.current-game-info {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.game {
+    margin: 20px 10px;
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+}
