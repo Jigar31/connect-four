@@ -254,6 +254,8 @@ function Game(props) {
                 type="button"
                 className="game-button play-again-button"
                 onClick={() => {
+		  setTournamentEnd(false);
+		  setTournamentWinner("");
                   setPlayer1((prevState) => ({ ...prevState, score: 0 }));
                   setPlayer2((prevState) => ({ ...prevState, score: 0 }));
                   setCurrentGame(0);
@@ -267,10 +269,11 @@ function Game(props) {
               type="button"
               className="game-button end-tournament-button"
               onClick={() => {
-                setPlayer1((prevState) => ({ ...prevState, score: 0 }));
-                setPlayer2((prevState) => ({ ...prevState, score: 0 }));
-                setCurrentGame(0);
-                initializeGame();
+		props.history.push("/two-player");
+                //setPlayer1((prevState) => ({ ...prevState, score: 0 }));
+                //setPlayer2((prevState) => ({ ...prevState, score: 0 }));
+                //setCurrentGame(0);
+                //initializeGame();
               }}
             >
               End Tournament
