@@ -136,8 +136,7 @@ function Game(props) {
       player1,
       player2,
       updateScore,
-      currentPlayer,
-      changePlayer
+      currentPlayer
     );
   };
 
@@ -150,11 +149,11 @@ function Game(props) {
     canvasRef.current.removeEventListener("click", clickHandler, false);
   };
 
-  const changePlayer = () => {
-    setCurrentPlayer((prevState) =>
-      prevState === player1.name ? player2.name : player1.name
-    );
-  };
+  //const changePlayer = () => {
+   // setCurrentPlayer((prevState) =>
+     // prevState === player1.name ? player2.name : player1.name
+    //);
+  //};
 
   useEffect(() => {
     initializeGame();
