@@ -76,15 +76,6 @@ function Game(props) {
   let row = 6;
   let column = 6;
 
-  console.log("window width:", window.screen.width);
-
-  if (window.screen.width > 700) {
-    row = 8;
-    column = 8;
-
-    console.log(row);
-  }
-
   const canvasRef = useRef(null);
   const [grid, setGrid] = useState(
     Array(row)
