@@ -100,7 +100,7 @@ export const fillColumn = (
           } else {
           	currentGamePlayer =
             		currentGamePlayer === player1.name ? player2.name : player1.name;
-          	//changePlayer();
+          	changePlayer();
 	  }
 
           currentTurnFinished = true;
