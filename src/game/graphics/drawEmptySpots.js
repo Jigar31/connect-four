@@ -52,8 +52,6 @@ export const drawEmptySpots = (
 
   ctx.fill();
   if (initialDraw) {
-    // console.log("grid", grid);
-    // console.log("newGrid", newGrid);
     setGrid(newGrid);
   } else {
     drawFilledSpots(ctx, grid, player1, player2);

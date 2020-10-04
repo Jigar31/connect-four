@@ -99,6 +99,17 @@ function Game(props) {
 
     setGameWinner(winner.name);
     setGameLooser(looser.name);
+
+    setGameStarter((prevState) =>
+      getTurn(
+        turnSetting,
+        prevState,
+        player1.name,
+        player2.name,
+        winner.name,
+        looser.name
+      )
+    );
   };
 
   useEffect(() => {
@@ -112,9 +123,6 @@ function Game(props) {
       player2.score > Math.floor(totalGames / 2)
     ) {
       let winner = player1.score > player2.score ? player1 : player2;
-      console.log(
-        `Tournament winner is ${winner.name} with ${winner.score} wins`
-      );
       setTournamentEnd(true);
       setTournamentWinner(winner.name);
       setGameWinner("");
@@ -144,7 +152,6 @@ function Game(props) {
   };
 
   const removeClickHandler = () => {
-    console.log("remove click handler");
     canvasRef.current.removeEventListener("click", clickHandler, false);
   };
 
@@ -220,8 +227,14 @@ function Game(props) {
             )}
           </div>
           <div className="score-board-container">
-            <ContainerBox info={containerBoxSettings.player1} />
-            <ContainerBox info={containerBoxSettings.player2} />
+            <ContainerBox
+              info={containerBoxSettings.player1}
+              currentGame={currentPlayer}
+            />
+            <ContainerBox
+              info={containerBoxSettings.player2}
+              currentPlayer={currentPlayer}
+            />
           </div>
           <div className="game-button-group">
             {!tournamentEnd && showNextGame && (
@@ -230,16 +243,6 @@ function Game(props) {
                 className="game-button next-game-button"
                 onClick={() => {
                   initializeGame();
-                  setGameStarter((prevState) =>
-                    getTurn(
-                      turnSetting,
-                      prevState,
-                      player1.name,
-                      player2.name,
-                      gameWinner,
-                      gameLooser
-                    )
-                  );
                 }}
               >
                 Next Game

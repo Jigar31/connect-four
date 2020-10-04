@@ -22,7 +22,7 @@ export const fillColumn = (
     currentGamePlayer = currentPlayer;
     columnClick = Array(grid.length).fill(grid[0].length);
   }
-  console.log("currentPlayer:", currentPlayer);
+
   if (currentTurnFinished) {
     currentTurnFinished = false;
     let rect = canvasGrid.getBoundingClientRect();

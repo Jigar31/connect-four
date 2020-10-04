@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContainerBox from "../common/ContainerBox";
 import Modal from "../common/Modal";
 import PlayerSetting from "./settings/PlayerSetting";
@@ -14,10 +14,23 @@ import TotalGamesAvatar from "../assets/two-player/total-games-avatar.png";
 import TurnSettingAvatar from "../assets/two-player/turn-setting-avatar.png";
 
 function TwoPlayer(props) {
-  const [player1Name, setPlayer1Name] = useState("David");
-  const [player2Name, setPlayer2Name] = useState("Maria");
-  const [totalGames, setTotalGames] = useState(5);
-  const [turnSetting, setTurnSetting] = useState(0);
+  let storedPlayer1Name = localStorage.getItem("player1Name");
+  let storedPlayer2Name = localStorage.getItem("player2Name");
+  let storedTotalGames = localStorage.getItem("totalGames");
+  let storedTurnSetting = localStorage.getItem("turnSetting");
+
+  const [player1Name, setPlayer1Name] = useState(
+    storedPlayer1Name ? storedPlayer1Name : "David"
+  );
+  const [player2Name, setPlayer2Name] = useState(
+    storedPlayer2Name ? storedPlayer2Name : "Maria"
+  );
+  const [totalGames, setTotalGames] = useState(
+    storedTotalGames ? parseInt(storedTotalGames) : 5
+  );
+  const [turnSetting, setTurnSetting] = useState(
+    storedTurnSetting ? parseInt(storedTurnSetting) : 0
+  );
 
   const [showPlayer1Modal, setShowPlayer1Modal] = useState(false);
   const [showPlayer2Modal, setShowPlayer2Modal] = useState(false);
@@ -98,6 +111,22 @@ function TwoPlayer(props) {
     totalGames,
     turnSetting,
   };
+
+  useEffect(() => {
+    localStorage.setItem("player1Name", player1Name);
+  }, [player1Name]);
+
+  useEffect(() => {
+    localStorage.setItem("player2Name", player2Name);
+  }, [player2Name]);
+
+  useEffect(() => {
+    localStorage.setItem("totalGames", totalGames);
+  }, [totalGames]);
+
+  useEffect(() => {
+    localStorage.setItem("turnSetting", turnSetting);
+  }, [turnSetting]);
 
   return (
     <div className="two-player-container">
