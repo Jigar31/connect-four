@@ -14,6 +14,8 @@ function Home(props) {
 
   const closeModal = () => setShowComingSoon(false);
 
+  localStorage.clear();
+
   return (
     <Fragment>
       {showComingSoon && (
