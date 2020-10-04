@@ -89,16 +89,6 @@ function Game(props) {
   const updateScore = (winner, looser) => {
     removeClickHandler();
     setShowNextGame(true);
-    setGameStarter((prevState) =>
-      getTurn(
-        turnSetting,
-        prevState,
-        player1.name,
-        player2.name,
-        winner.name,
-        looser.name
-      )
-    );
 
     if (winner.name === player1.name) {
       setPlayer1((prevState) => ({ ...prevState, score: prevState.score + 1 }));
@@ -236,12 +226,14 @@ function Game(props) {
                 className="game-button next-game-button"
                 onClick={() => {
                   initializeGame();
-                  setCurrentPlayer(
+                  setGameStarter((prevState) =>
                     getTurn(
                       turnSetting,
-                      currentPlayer,
+                      prevState,
                       player1.name,
-                      player2.name
+                      player2.name,
+                      winner.name,
+                      looser.name
                     )
                   );
                 }}
