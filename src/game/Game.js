@@ -38,6 +38,7 @@ function Game(props) {
   const [currentPlayer, setCurrentPlayer] = useState(gameStarter);
   const [currentGame, setCurrentGame] = useState(0);
   const [gameWinner, setGameWinner] = useState("");
+  const [gameLooser, setGameLooser] = useState("");
   const [tournamentEnd, setTournamentEnd] = useState(false);
   const [tournamentWinner, setTournamentWinner] = useState("");
   const [showNextGame, setShowNextGame] = useState(false);
@@ -97,6 +98,7 @@ function Game(props) {
     }
 
     setGameWinner(winner.name);
+    setGameLooser(looser.name);
   };
 
   useEffect(() => {
@@ -116,6 +118,7 @@ function Game(props) {
       setTournamentEnd(true);
       setTournamentWinner(winner.name);
       setGameWinner("");
+      setGameLooser("");
 
       // props.history.push("/two-player");
     }
@@ -161,6 +164,7 @@ function Game(props) {
 
   const initializeGame = () => {
     setGameWinner("");
+    setGameLooser("");
     setCurrentGame((prevState) => prevState + 1);
     let newGrid = Array(row)
       .fill()
@@ -232,8 +236,8 @@ function Game(props) {
                       prevState,
                       player1.name,
                       player2.name,
-                      winner.name,
-                      looser.name
+                      gameWinner,
+                      gameLooser
                     )
                   );
                 }}
