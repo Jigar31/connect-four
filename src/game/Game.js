@@ -32,9 +32,10 @@ function Game(props) {
     tile: player2Name,
   });
 
-  const [currentPlayer, setCurrentPlayer] = useState(
+  const [gameStarter, setGameStarter] = useState(
     getTurn(turnSetting, "", player1Name, player2Name)
   );
+  const [currentPlayer, setCurrentPlayer] = useState(gameStarter);
   const [currentGame, setCurrentGame] = useState(0);
   const [gameWinner, setGameWinner] = useState("");
   const [tournamentEnd, setTournamentEnd] = useState(false);
@@ -88,7 +89,7 @@ function Game(props) {
   const updateScore = (winner, looser) => {
     removeClickHandler();
     setShowNextGame(true);
-    setCurrentPlayer((prevState) =>
+    setGameStarter((prevState) =>
       getTurn(
         turnSetting,
         prevState,
@@ -98,6 +99,7 @@ function Game(props) {
         looser.name
       )
     );
+    setCurrentPlayer(gameStarter);
 
     if (winner.name === player1.name) {
       setPlayer1((prevState) => ({ ...prevState, score: prevState.score + 1 }));
@@ -151,7 +153,7 @@ function Game(props) {
   };
 
   const changePlayer = () => {
-     setCurrentPlayer((prevState) =>
+    setCurrentPlayer((prevState) =>
       prevState === player1.name ? player2.name : player1.name
     );
   };
@@ -254,8 +256,11 @@ function Game(props) {
                 type="button"
                 className="game-button play-again-button"
                 onClick={() => {
-		  setTournamentEnd(false);
-		  setTournamentWinner("");
+                  setGameStarter(
+                    getTurn(turnSetting, "", player1Name, player2Name)
+                  );
+                  setTournamentEnd(false);
+                  setTournamentWinner("");
                   setPlayer1((prevState) => ({ ...prevState, score: 0 }));
                   setPlayer2((prevState) => ({ ...prevState, score: 0 }));
                   setCurrentGame(0);
@@ -269,7 +274,7 @@ function Game(props) {
               type="button"
               className="game-button end-tournament-button"
               onClick={() => {
-		props.history.push("/two-player");
+                props.history.push("/two-player");
                 //setPlayer1((prevState) => ({ ...prevState, score: 0 }));
                 //setPlayer2((prevState) => ({ ...prevState, score: 0 }));
                 //setCurrentGame(0);
