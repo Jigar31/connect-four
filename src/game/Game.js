@@ -99,7 +99,6 @@ function Game(props) {
         looser.name
       )
     );
-    setCurrentPlayer(gameStarter);
 
     if (winner.name === player1.name) {
       setPlayer1((prevState) => ({ ...prevState, score: prevState.score + 1 }));
@@ -109,6 +108,10 @@ function Game(props) {
 
     setGameWinner(winner.name);
   };
+
+  useEffect(() => {
+    setCurrentPlayer(gameStarter);
+  }, [gameStarter]);
 
   const checkTournamentWin = useCallback(() => {
     if (
