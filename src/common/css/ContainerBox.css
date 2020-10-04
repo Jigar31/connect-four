@@ -26,10 +26,29 @@
     border-bottom: 1px solid darkgray;
 }
 
+
 .container-box__info__readonly {
     margin-left: 10px;
     margin-top: 10px;
     width: 60px;
+}
+
+.container-box__info__readonly .container-box__info {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 60%;
+}
+
+.container-box__info__readonly .container-box__title {
+    font-size: 9px;
+    font-weight: 500;
+}
+
+.container-box__info__readonly .container-box__value {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 5px;
+    border-bottom: 1px solid darkgray;
 }
 
 .score-info {
