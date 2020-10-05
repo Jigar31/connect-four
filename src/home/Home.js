@@ -26,7 +26,7 @@ function Home(props) {
 
       <div className="home-container">
         <header className="header">
-          <p className="header__title">Connect Four</p>
+          <p className="header__title">CONNECT FOUR!</p>
           <p className="header__subtitle">
             Play with other players around the world.
           </p>
@@ -35,11 +35,13 @@ function Home(props) {
         <main className="container">
           <div className="img-container">
             <div className="connect-four-img-container">
+              <span className="yellow-circle"></span>
               <img
                 src={ConnectFourImg}
                 className="connect-four-img"
                 alt="connect four"
               />
+              <span className="blue-circle"></span>
             </div>
             <div className="play">
               <img src={PlayIcon} className="play-icon" alt="play" />
