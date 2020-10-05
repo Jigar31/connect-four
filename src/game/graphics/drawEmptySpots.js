@@ -9,13 +9,22 @@ export const drawEmptySpots = (
   player2
 ) => {
   ctx.beginPath();
-  const radius = 21;
   const startAngle = 0;
   const endAngle = Math.PI * 2;
 
-  let x = 25;
-  let y = 25;
-  let margin = 0;
+  let radius = 18;
+  let margin = 7;
+
+  if (grid.length === 6 && grid[0].length === 7) {
+    radius = 20;
+    margin = 8;
+  } else if (grid.length === 8 && grid[0].length === 8) {
+    radius = 23;
+    margin = 8;
+  }
+
+  let x = radius + margin;
+  let y = radius + margin;
 
   let newGrid;
   if (initialDraw) {
@@ -28,29 +37,51 @@ export const drawEmptySpots = (
         newGrid[i][j] = {
           row: i,
           col: j,
-          top: 50 * i + margin,
-          bottom: 50 * i + 50 + margin,
-          left: 50 * j + margin,
-          right: 50 * j + 50 + margin,
+          top: 2 * (radius + margin) * i,
+          bottom: 2 * (radius + margin) * (i + 1),
+          left: 2 * (radius + margin) * j,
+          right: 2 * (radius + margin) * (j + 1),
           filled: false,
           filledBy: "",
         };
       }
 
-      let left = x + 50 * i;
-      let top = y + 50 * j;
+      let left = x + 2 * (radius + margin) * i;
+      let top = y + 2 * (radius + margin) * j;
 
+      ctx.beginPath();
       ctx.fillStyle = "white";
-      ctx.moveTo(left, top);
+      //   ctx.moveTo(top, left);
+      ctx.arc(top, left, radius, startAngle, endAngle, false);
+      ctx.fill();
+      ctx.closePath();
+
+      // ctx.fillStyle = "white";
       // ctx.shadowOffsetX = -5;
       // ctx.shadowOffsetY = 5;
       // ctx.shadowBlur = 5;
       // ctx.shadowColor = "rgba(130,130,130, 0.5)";
-      ctx.arc(left, top, radius, startAngle, endAngle, false);
+      // ctx.arc(top, left, radius, startAngle, endAngle, false);
+
+      ctx.beginPath();
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 2.3;
+      ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
+      ctx.shadowBlur = 5;
+      ctx.shadowOffsetY = 4;
+
+      ctx.arc(top, left, radius + 1, startAngle, endAngle, false);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.lineWidth = 1;
+      ctx.shadowColor = "rgba(0, 0, 0, 0)";
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
     }
   }
 
-  ctx.fill();
+  // ctx.fill();
   if (initialDraw) {
     setGrid(newGrid);
   } else {

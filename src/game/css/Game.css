@@ -118,11 +118,12 @@
     }
 
     .game {
+        padding: 20px 0;
         width: 524px;
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
     .score-board-container {
         flex-direction: column;
     }
@@ -150,8 +151,9 @@
         box-shadow: 0px 3px 6px #00000029;
         border: 1px solid #F7F7F7;
         border-radius: 30px;
-        width: 400px;
+        width: 550px;
         height: 571px;
+        padding: 0 20px;
     }
     
     .info {

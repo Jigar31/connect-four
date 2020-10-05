@@ -12,7 +12,8 @@ export const drawFilledSpots = (ctx, grid, player1, player2) => {
           column.bottom,
           column.filledBy,
           player1,
-          player2
+          player2,
+          grid[0].length
         );
       }
     });

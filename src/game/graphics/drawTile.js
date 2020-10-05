@@ -15,32 +15,55 @@ export const drawTile = (
   bottom,
   currentPlayer,
   player1,
-  player2
+  player2,
+  columnsInGrid
 ) => {
-  const radius = 19;
   const startAngle = 0;
   const endAngle = Math.PI * 2;
-
+  let radius = 17;
   let x = Math.floor((left + right) / 2);
   let y = Math.floor((top + bottom) / 2);
+  let dxImg1 = 11;
+  let dyImg1 = 13;
+  let dxImg2 = 11;
+  let dyImg2 = 13;
+  let img1Width = 21;
+  let img2Width = 23;
+  let img1Height = 25;
+  let img2Height = 25;
+
+  if (columnsInGrid === 7) {
+    radius = 18;
+  } else if (columnsInGrid === 8) {
+    radius = 21;
+    img1Width = 22;
+  }
+
   let color = "";
 
   if (currentPlayer === player1) {
     color = "#37AC5D";
-    ctx.drawImage(player1Img, left + 14, top + 12, 22, 25);
+    ctx.shadowOffsetX = 1;
+    ctx.drawImage(player1Img, x - dxImg1, y - dyImg1, img1Width, img1Height);
   } else if (currentPlayer === player2) {
     color = "#F8D146";
-    ctx.drawImage(player2Img, left + 12, top + 12, 25, 25);
+    ctx.shadowOffsetX = 0;
+    ctx.drawImage(player2Img, x - dxImg2, y - dyImg2, img2Width, img2Height);
   }
+
+  ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
+  ctx.shadowBlur = 3;
+  ctx.shadowOffsetY = 2;
+  ctx.shadowOffsetX = 1;
+
   ctx.beginPath();
   ctx.arc(x, y, radius, startAngle, endAngle, false);
   ctx.strokeStyle = color;
   ctx.lineWidth = 5;
   ctx.stroke();
+  ctx.closePath();
 
-  ctx.beginPath();
-  ctx.arc(x, y, radius + 4, startAngle, endAngle, false);
-  ctx.strokeStyle = "white";
-  ctx.lineWidth = 3;
-  ctx.stroke();
+  ctx.shadowColor = "rgba(0, 0, 0, 0)";
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetY = 0;
 };

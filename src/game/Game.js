@@ -24,12 +24,10 @@ function Game(props) {
   const [player1, setPlayer1] = useState({
     name: player1Name,
     score: 0,
-    tile: player1Name,
   });
   const [player2, setPlayer2] = useState({
     name: player2Name,
     score: 0,
-    tile: player2Name,
   });
 
   const [gameStarter, setGameStarter] = useState(
@@ -79,13 +77,30 @@ function Game(props) {
 
   let row = 6;
   let column = 6;
+  let newCanvasGrid;
+
+  if (window.innerWidth < 550) {
+    row = 6;
+    column = 6;
+    newCanvasGrid = Array(row)
+      .fill()
+      .map(() => Array(column).fill({}));
+  } else if (window.innerWidth < 950) {
+    row = 6;
+    column = 7;
+    newCanvasGrid = Array(row)
+      .fill()
+      .map(() => Array(column).fill({}));
+  } else {
+    row = 8;
+    column = 8;
+    newCanvasGrid = Array(row)
+      .fill()
+      .map(() => Array(column).fill({}));
+  }
 
   const canvasRef = useRef(null);
-  const [grid, setGrid] = useState(
-    Array(row)
-      .fill()
-      .map(() => Array(column).fill({}))
-  );
+  const [grid, setGrid] = useState(newCanvasGrid);
 
   const updateScore = (winner, looser) => {
     removeClickHandler();
@@ -191,6 +206,19 @@ function Game(props) {
     addClickHandler();
   };
 
+  let canvasWidth =
+    window.innerWidth < 550
+      ? "300px"
+      : window.innerWidth < 950
+      ? "392px"
+      : "497px";
+  let canvasHeight =
+    window.innerWidth < 550
+      ? "300px"
+      : window.innerWidth < 950
+      ? "336px"
+      : "497px";
+
   return (
     <div className="game-container">
       <div className="game-header">
@@ -204,7 +232,11 @@ function Game(props) {
       </div>
       <div className="game-board">
         <div className="game">
-          <canvas ref={canvasRef} width="300px" height="300px"></canvas>
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+          ></canvas>
         </div>
         <div className="game-info">
           <div className="info">

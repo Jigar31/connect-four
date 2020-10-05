@@ -75,12 +75,13 @@
 }
 
 .play-icon {
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .play-text {
-    padding-bottom: 2px;
-    letter-spacing: 4.4px;
+    padding-bottom: 15px;
+    line-height: 1;
+    letter-spacing: 2.4px;
     color: #424242;
     margin: 0;
 }
@@ -90,7 +91,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid darkgray;
+    border-top: 1px solid lightgray;
+    padding-top: 20px;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
@@ -98,7 +100,7 @@
 
 .button {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     width: 80%;
     height: 50px;
@@ -113,6 +115,7 @@
 .button-icon {
     height: 30px;
     width: 30px;
+    margin: 20px;
 }
 
 .custom-game-button {
@@ -143,7 +146,7 @@
     border: 1px solid #F7F7F7;
     border-radius: 30px;
     color: #424242;
-    font-size: 18px;
+    font-size: 12px;
 }
 
 .copyright {
@@ -190,7 +193,7 @@
     }
 
     .button {
-        width: 175px;
+        width: 235px;
     }
 }
 
@@ -204,6 +207,7 @@
     
     .container{
         width: 650px;
+        height: 395px;
     }
 
     .img-container {
@@ -211,13 +215,13 @@
     }
 
     .connect-four-img-container {
-        top: 0px;
-        left: 340px;
+        top: 12px;
+        left: 354px;
     }
 
     .connect-four-img {
-        height: 400px;
-        width: 400px;
+        height: 450px;
+        width: 450px;
     }
 
     .button-group {
@@ -228,7 +232,8 @@
     }
 
     .button {
-        width: 220px;
+        width: 250px;
+        height: 55px;
     }
 
     .footer {

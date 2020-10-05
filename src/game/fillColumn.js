@@ -20,7 +20,7 @@ export const fillColumn = (
 ) => {
   if (currentGamePlayer === "") {
     currentGamePlayer = currentPlayer;
-    columnClick = Array(grid.length).fill(grid[0].length);
+    columnClick = Array(grid[0].length).fill(grid.length);
   }
 
   if (currentTurnFinished) {
@@ -35,7 +35,7 @@ export const fillColumn = (
     let selectedColumn;
 
     for (let i = 0; i < grid.length; i++) {
-      for (let j = 0; j < grid.length; j++) {
+      for (let j = 0; j < grid[0].length; j++) {
         let gridBlock = grid[i][j];
 
         if (

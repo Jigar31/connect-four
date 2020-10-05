@@ -9,6 +9,6 @@ export const initializeCanvas = (
   height,
   initialDraw
 ) => {
-  drawCanvas(ctx, width, height);
+  drawCanvas(ctx, grid, width, height);
   drawEmptySpots(ctx, grid, setGrid, initialDraw);
 };

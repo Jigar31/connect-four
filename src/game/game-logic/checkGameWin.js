@@ -1,16 +1,10 @@
-const getTileInfoInDirection = (grid, row, column, player, direction) => {
+const getTileInfoInDirection = (grid, row, col, player, direction) => {
   if (!direction.end) {
-    let newCount = getPlayerTileCount(
-      grid,
-      row,
-      column,
-      player,
-      direction.count
-    );
+    let newCount = getPlayerTileCount(grid, row, col, player, direction.count);
 
     if (newCount > direction.count) {
       direction.count = newCount;
-      direction.tiles.push({ row, column });
+      direction.tiles.push({ row, col });
     } else {
       direction.end = true;
     }
@@ -27,8 +21,8 @@ const getPlayerTileCount = (grid, row, col, player, count) => {
   return count;
 };
 
-export const checkGameWin = (grid, row, column, player) => {
-  let currentTile = { row, column };
+export const checkGameWin = (grid, row, col, player) => {
+  let currentTile = { row, col };
   let horizontal = {
     top: { count: 1, tiles: [currentTile], end: false },
     bottom: { count: 1, tiles: [currentTile], end: false },
@@ -56,14 +50,14 @@ export const checkGameWin = (grid, row, column, player) => {
     horizontal.top = getTileInfoInDirection(
       grid,
       row,
-      column - i,
+      col - i,
       player,
       horizontal.top
     );
     horizontal.bottom = getTileInfoInDirection(
       grid,
       row,
-      column + i,
+      col + i,
       player,
       horizontal.bottom
     );
@@ -74,14 +68,14 @@ export const checkGameWin = (grid, row, column, player) => {
     vertical.top = getTileInfoInDirection(
       grid,
       row - i,
-      column,
+      col,
       player,
       vertical.top
     );
     vertical.bottom = getTileInfoInDirection(
       grid,
       row + i,
-      column,
+      col,
       player,
       vertical.bottom
     );
@@ -92,14 +86,14 @@ export const checkGameWin = (grid, row, column, player) => {
     diagonalFromLeft.top = getTileInfoInDirection(
       grid,
       row - i,
-      column - i,
+      col - i,
       player,
       diagonalFromLeft.top
     );
     diagonalFromLeft.bottom = getTileInfoInDirection(
       grid,
       row + i,
-      column + i,
+      col + i,
       player,
       diagonalFromLeft.bottom
     );
@@ -110,14 +104,14 @@ export const checkGameWin = (grid, row, column, player) => {
     diagonalFromRight.top = getTileInfoInDirection(
       grid,
       row + i,
-      column - i,
+      col - i,
       player,
       diagonalFromRight.top
     );
     diagonalFromRight.bottom = getTileInfoInDirection(
       grid,
       row - i,
-      column + i,
+      col + i,
       player,
       diagonalFromRight.bottom
     );
