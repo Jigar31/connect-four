@@ -133,7 +133,7 @@ function Game(props) {
 
   const checkTournamentWin = useCallback(() => {
     if (
-      currentGame === totalGames ||
+      currentGame > totalGames ||
       player1.score > Math.floor(totalGames / 2) ||
       player2.score > Math.floor(totalGames / 2)
     ) {
@@ -241,12 +241,12 @@ function Game(props) {
         <div className="game-info">
           <div className="info">
             <div className="info-header">{totalGames} Games Tournament</div>
-            {gameWinner === "" && (
+            {!tournamentEnd && gameWinner === "" && (
               <div className="current-game-info">
                 Playing Game {currentGame}
               </div>
             )}
-            {gameWinner !== "" && (
+            {!tournamentEnd && gameWinner !== "" && (
               <Congratulations
                 player={gameWinner}
                 game={currentGame}
