@@ -11,10 +11,8 @@ export const highlightTiles = (ctx, grid, tiles) => {
 
   tiles.forEach((currentTile, i) => {
     setTimeout(() => {
-      let tile = grid[currentTile.row][currentTile.col];
-
-      let x = Math.floor((tile.left + tile.right) / 2);
-      let y = Math.floor((tile.top + tile.bottom) / 2);
+      let x = Math.floor((currentTile.left + currentTile.right) / 2);
+      let y = Math.floor((currentTile.top + currentTile.bottom) / 2);
 
       ctx.beginPath();
       ctx.arc(x, y, radius, startAngle, endAngle, false);

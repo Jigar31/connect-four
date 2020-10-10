@@ -4,7 +4,7 @@ const getTileInfoInDirection = (grid, row, col, player, direction) => {
 
     if (newCount > direction.count) {
       direction.count = newCount;
-      direction.tiles.push({ row, col });
+      direction.tiles.push(grid[row][col]);
     } else {
       direction.end = true;
     }
@@ -22,7 +22,7 @@ const getPlayerTileCount = (grid, row, col, player, count) => {
 };
 
 export const checkGameWin = (grid, row, col, player) => {
-  let currentTile = { row, col };
+  let currentTile = grid[row][col];
   let horizontal = {
     top: { count: 1, tiles: [currentTile], end: false },
     bottom: { count: 1, tiles: [currentTile], end: false },

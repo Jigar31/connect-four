@@ -6,10 +6,14 @@ function Congratulations(props) {
 
   return (
     <div className="congratulations">
-      <div className="congratulations-title">Congratulations!</div>
+      <div className="congratulations-title">
+        {player !== "" && "Congratulations!"}
+        {player === "" && "Draw!"}
+      </div>
       <div className="winner-info">
         {!tournamentEnd && `${player}, you won Game ${game}`}
-        {tournamentEnd && `${player}, you won tournament`}
+        {tournamentEnd && player !== "" && `${player}, you won tournament`}
+        {tournamentEnd && player === "" && `Tournament ends in draw`}
       </div>
     </div>
   );

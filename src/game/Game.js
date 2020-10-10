@@ -137,9 +137,16 @@ function Game(props) {
       player1.score > Math.floor(totalGames / 2) ||
       player2.score > Math.floor(totalGames / 2)
     ) {
-      let winner = player1.score > player2.score ? player1 : player2;
+      let winner = "";
+
+      if (player1.score === player2.score) {
+        setTournamentWinner("");
+      } else {
+        winner = player1.score > player2.score ? player1 : player2;
+        setTournamentWinner(winner.name);
+      }
+
       setTournamentEnd(true);
-      setTournamentWinner(winner.name);
       setGameWinner("");
       setGameLooser("");
 
