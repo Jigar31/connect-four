@@ -283,7 +283,11 @@ function Game(props) {
               </button>
             )}
             {!tournamentEnd && !showNextGame && (
-              <button type="button" className="game-button undo-button">
+              <button
+                type="button"
+                className="game-button undo-button disabled"
+                disabled
+              >
                 Undo
               </button>
             )}

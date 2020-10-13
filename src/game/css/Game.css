@@ -111,6 +111,11 @@
     color: #CC0000; 
 }
 
+.disabled {
+    cursor: not-allowed;
+    background-color: darkgray;
+}
+
 @media screen and (min-width: 550px) {
     .score-board-container .container-box {
         width: 200px;
