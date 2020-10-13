@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route path="/game" component={Game} />
           <Route path="/two-player" component={TwoPlayer} />
           <Route exact path="/" component={Home} />
           <Route path="/" component={NotFound} />

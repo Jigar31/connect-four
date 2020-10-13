@@ -4,6 +4,7 @@ import Modal from "../common/Modal";
 import PlayerSetting from "./settings/PlayerSetting";
 import TotalGamesSetting from "./settings/TotalGameSetting";
 import TurnSetting from "./settings/TurnSetting";
+import Game from "../game/Game";
 
 import "./css/TwoPlayer.css";
 
@@ -18,6 +19,8 @@ function TwoPlayer(props) {
   let storedPlayer2Name = localStorage.getItem("player2Name");
   let storedTotalGames = localStorage.getItem("totalGames");
   let storedTurnSetting = localStorage.getItem("turnSetting");
+
+  const [startGame, setStartGame] = useState(false);
 
   const [player1Name, setPlayer1Name] = useState(
     storedPlayer1Name ? storedPlayer1Name : "David"
@@ -105,13 +108,6 @@ function TwoPlayer(props) {
     },
   };
 
-  const selectedGameSettings = {
-    player1Name,
-    player2Name,
-    totalGames,
-    turnSetting,
-  };
-
   useEffect(() => {
     localStorage.setItem("player1Name", player1Name);
   }, [player1Name]);
@@ -128,80 +124,82 @@ function TwoPlayer(props) {
     localStorage.setItem("turnSetting", turnSetting);
   }, [turnSetting]);
 
-  return (
-    <div className="two-player-container">
-      <div className="two-player__header ">
-        <img
-          src={BackArrow}
-          alt="back"
-          className="two-player__header__back-icon"
-          onClick={() => props.history.push("/")}
-        />
-        <p className="two-player__header__title">Two Players</p>
-      </div>
+  if (startGame) {
+    return <Game setStartGame={setStartGame} />;
+  } else {
+    return (
+      <div className="two-player-container">
+        <div className="two-player__header ">
+          <img
+            src={BackArrow}
+            alt="back"
+            className="two-player__header__back-icon"
+            onClick={() => {
+              setStartGame(false);
+              props.history.push("/");
+            }}
+          />
+          <p className="two-player__header__title">Two Players</p>
+        </div>
 
-      {showPlayer1Modal && (
-        <Modal closeModal={closePlayer1Modal}>
-          <PlayerSetting
-            title="Player1"
-            playerName={player1Name}
-            setPlayerName={setPlayer1Name}
-            closeModal={closePlayer1Modal}
-          />
-        </Modal>
-      )}
-      {showPlayer2Modal && (
-        <Modal closeModal={closePlayer2Modal}>
-          <PlayerSetting
-            title="Player2"
-            playerName={player2Name}
-            setPlayerName={setPlayer2Name}
-            closeModal={closePlayer2Modal}
-          />
-        </Modal>
-      )}
-      {showTotalGamesModal && (
-        <Modal closeModal={closeTotalGamesModal}>
-          <TotalGamesSetting
-            totalGames={totalGames}
-            setTotalGames={setTotalGames}
-            closeModal={closeTotalGamesModal}
-          />
-        </Modal>
-      )}
-      {showTurnSettingModal && (
-        <Modal closeModal={closeTurnSettingModal}>
-          <TurnSetting
-            turnSetting={turnSetting}
-            setTurnSetting={setTurnSetting}
-            turnSettingOptions={turnSettingOptionLabels}
-            closeModal={closeTurnSettingModal}
-          />
-        </Modal>
-      )}
+        {showPlayer1Modal && (
+          <Modal closeModal={closePlayer1Modal}>
+            <PlayerSetting
+              title="Player1"
+              playerName={player1Name}
+              setPlayerName={setPlayer1Name}
+              closeModal={closePlayer1Modal}
+            />
+          </Modal>
+        )}
+        {showPlayer2Modal && (
+          <Modal closeModal={closePlayer2Modal}>
+            <PlayerSetting
+              title="Player2"
+              playerName={player2Name}
+              setPlayerName={setPlayer2Name}
+              closeModal={closePlayer2Modal}
+            />
+          </Modal>
+        )}
+        {showTotalGamesModal && (
+          <Modal closeModal={closeTotalGamesModal}>
+            <TotalGamesSetting
+              totalGames={totalGames}
+              setTotalGames={setTotalGames}
+              closeModal={closeTotalGamesModal}
+            />
+          </Modal>
+        )}
+        {showTurnSettingModal && (
+          <Modal closeModal={closeTurnSettingModal}>
+            <TurnSetting
+              turnSetting={turnSetting}
+              setTurnSetting={setTurnSetting}
+              turnSettingOptions={turnSettingOptionLabels}
+              closeModal={closeTurnSettingModal}
+            />
+          </Modal>
+        )}
 
-      <div className="settings-container">
-        <ContainerBox info={containerBoxSettings.player1} />
-        <ContainerBox info={containerBoxSettings.player2} />
-        <ContainerBox info={containerBoxSettings.totalGames} />
-        <ContainerBox info={containerBoxSettings.turnSetting} />
-        <div className="start-game">
-          <button
-            className="start-button"
-            type="button"
-            onClick={() =>
-              props.history.push({
-                pathname: "/game",
-                state: selectedGameSettings,
-              })
-            }
-          >
-            Start Game
-          </button>
+        <div className="settings-container">
+          <ContainerBox info={containerBoxSettings.player1} />
+          <ContainerBox info={containerBoxSettings.player2} />
+          <ContainerBox info={containerBoxSettings.totalGames} />
+          <ContainerBox info={containerBoxSettings.turnSetting} />
+          <div className="start-game">
+            <button
+              className="start-button"
+              type="button"
+              onClick={() => setStartGame(true)}
+            >
+              Start Game
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default TwoPlayer;

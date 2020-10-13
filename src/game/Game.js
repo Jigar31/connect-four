@@ -14,12 +14,11 @@ import Player2Avatar from "../assets/two-player/player2-avatar.png";
 import "./css/Game.css";
 
 function Game(props) {
-  const {
-    player1Name,
-    player2Name,
-    totalGames,
-    turnSetting,
-  } = props.location.state;
+  const player1Name = localStorage.getItem("player1Name");
+  const player2Name = localStorage.getItem("player2Name");
+  const totalGames = parseInt(localStorage.getItem("totalGames"));
+  const turnSetting = parseInt(localStorage.getItem("turnSetting"));
+  const setStartGame = props.setStartGame;
 
   const [player1, setPlayer1] = useState({
     name: player1Name,
@@ -228,7 +227,7 @@ function Game(props) {
           src={BackArrow}
           alt="back"
           className="game-header__back-icon"
-          onClick={() => props.history.push("/two-player")}
+          onClick={() => setStartGame(false)}
         />
         <p className="game-header__title">Two Players</p>
       </div>
