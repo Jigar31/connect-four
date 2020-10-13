@@ -72,9 +72,6 @@ function Game(props) {
     },
   };
 
-  // let [row, setRow] = useState(6);
-  // let [column, setColumn] = useState(6);
-
   let row = 6;
   let column = 6;
   let newCanvasGrid;
@@ -149,8 +146,6 @@ function Game(props) {
       setTournamentEnd(true);
       setGameWinner("");
       setGameLooser("");
-
-      // props.history.push("/two-player");
     }
   }, [currentGame, player1, player2, totalGames]);
 
@@ -316,10 +311,6 @@ function Game(props) {
               className="game-button end-tournament-button"
               onClick={() => {
                 props.history.push("/two-player");
-                //setPlayer1((prevState) => ({ ...prevState, score: 0 }));
-                //setPlayer2((prevState) => ({ ...prevState, score: 0 }));
-                //setCurrentGame(0);
-                //initializeGame();
               }}
             >
               End Tournament

@@ -22,9 +22,6 @@ export const createGridBorder = (ctx, grid, width, height) => {
   ctx.strokeStyle = "white";
   ctx.lineWidth = 3;
   ctx.shadowColor = "";
-  //   ctx.shadowBlur = 1;
-  //   ctx.shadowOffsetY = -2;
-  //   ctx.shadowOffsetX = 2;
 
   //top left
   ctx.beginPath();

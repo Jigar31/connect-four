@@ -29,9 +29,6 @@ export const fillColumn = (
     let x = Math.floor(Math.floor(e.clientX - rect.left));
     // let y = Math.floor(Math.floor(e.clientY - rect.top));
 
-    // console.log('x:', x);
-    // console.log('y:', y);
-
     let selectedColumn;
 
     for (let i = 0; i < grid.length; i++) {

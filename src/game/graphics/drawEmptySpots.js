@@ -51,17 +51,9 @@ export const drawEmptySpots = (
 
       ctx.beginPath();
       ctx.fillStyle = "white";
-      //   ctx.moveTo(top, left);
       ctx.arc(top, left, radius, startAngle, endAngle, false);
       ctx.fill();
       ctx.closePath();
-
-      // ctx.fillStyle = "white";
-      // ctx.shadowOffsetX = -5;
-      // ctx.shadowOffsetY = 5;
-      // ctx.shadowBlur = 5;
-      // ctx.shadowColor = "rgba(130,130,130, 0.5)";
-      // ctx.arc(top, left, radius, startAngle, endAngle, false);
 
       ctx.beginPath();
       ctx.strokeStyle = "white";
@@ -81,7 +73,6 @@ export const drawEmptySpots = (
     }
   }
 
-  // ctx.fill();
   if (initialDraw) {
     setGrid(newGrid);
   } else {
