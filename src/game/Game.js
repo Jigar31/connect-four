@@ -313,7 +313,7 @@ function Game(props) {
               type="button"
               className="game-button end-tournament-button"
               onClick={() => {
-                props.history.push("/two-player");
+                setStartGame(false);
               }}
             >
               End Tournament
