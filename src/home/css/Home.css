@@ -127,7 +127,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 80%;
+    width: 95%;
     height: 50px;
     border: none;
     outline: none;
@@ -135,6 +135,7 @@
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 16px;
+    box-shadow: 0 0 10px 1px #42424290;
 }
 
 .button-icon {
@@ -157,6 +158,15 @@
 
 .training-game-button {
     background: #6E4BFF 0% 0% no-repeat padding-box;
+}
+
+.rules {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.rule-list {
+    font-size: 14px;
 }
 
 .footer {
@@ -236,7 +246,6 @@
     
     .container{
         width: 650px;
-        height: 395px;
         padding-top: 84px;
     }
 
@@ -285,6 +294,11 @@
     .button {
         width: 250px;
         height: 55px;
+    }
+
+    .rules {
+        padding-left: 10%;
+        padding-right: 10%;
     }
 
     .footer {

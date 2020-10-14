@@ -49,39 +49,33 @@ function Home(props) {
             </div>
           </div>
 
-          <div className="button-group">
-            <button
-              className="button custom-game-button"
-              type="button"
-              onClick={() => setShowComingSoon(true)}
-            >
-              <img className="button-icon" src={CustomGameIcon} alt="" />
-              Custom Game
-            </button>
-            <button
-              className="button two-player-button"
-              type="button"
-              onClick={() => props.history.push("/two-player")}
-            >
-              <img className="button-icon" src={TwoPlayerIcon} alt="" />
-              Two Players
-            </button>
-            <button
-              className="button game-online-button"
-              type="button"
-              onClick={() => setShowComingSoon(true)}
-            >
-              <img className="button-icon" src={OnlineGameIcon} alt="" />
-              Game Online
-            </button>
-            <button
-              className="button training-game-button"
-              type="button"
-              onClick={() => setShowComingSoon(true)}
-            >
-              <img className="button-icon" src={TrainingGameIcon} alt="" />
-              Training Game
-            </button>
+          <div className="rules-container">
+            <div className="button-group">
+              <button
+                className="button two-player-button"
+                type="button"
+                onClick={() => props.history.push("/two-player")}
+              >
+                <img className="button-icon" src={TwoPlayerIcon} alt="" />
+                Play Two Players
+              </button>
+            </div>
+            <div className="rules">
+              <p>How to play:</p>
+              <ol className="rule-list">
+                <li>Player who starts the game will drop a tile in a column</li>
+                <li>Game will be played in alternates</li>
+                <li>
+                  <b>Game winner</b> will be player who first gets his/her 4
+                  tiles in a row (which can be horizontal, vertical or
+                  diagonal).
+                </li>
+                <li>
+                  <b>Tournament winner</b> will be player who wins more games
+                  than other player or wins more than 50% of tournament.
+                </li>
+              </ol>
+            </div>
           </div>
         </main>
 
